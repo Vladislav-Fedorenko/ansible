@@ -1,0 +1,32 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/localhost.pub"
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo su
+    cat /home/vagrant/.ssh/localhost.pub >> /home/vagrant/.ssh/authorized_keys
+    cp -r /home/vagrant/.ssh /root
+    rm /home/vagrant/.ssh/localhost.pub
+  SHELL
+
+  config.vm.define "debian_stretch64" do |debian_stretch64|
+    debian_stretch64.vm.box = "debian/stretch64"
+    debian_stretch64.vm.network "private_network", ip: "192.168.33.10"
+    debian_stretch64.vm.network "forwarded_port", guest: 80, host: 8080
+    debian_stretch64.vm.provider "virtualbox" do |vb|
+         vb.gui = false
+        # Customize the amount of memory on the VM:
+        # vb.memory = "1024"
+      end
+  end
+
+  config.vm.define "debian_buster64" do |debian_buster64|
+    debian_buster64.vm.box = "debian/buster64"
+    debian_buster64.vm.network "private_network", ip: "192.168.33.11"
+    debian_buster64.vm.network "forwarded_port", guest: 80, host: 8081
+    debian_buster64.vm.provider "virtualbox" do |vb|
+         vb.gui = false
+        # Customize the amount of memory on the VM:
+        # vb.memory = "1024"
+      end
+  end
+end

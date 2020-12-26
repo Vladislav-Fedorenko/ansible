@@ -1,0 +1,4 @@
+---
+- include: 'firewall-configure.yml'
+  tags:
+    - firewall

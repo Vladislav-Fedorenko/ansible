@@ -1,0 +1,15 @@
+---
+- include: 'api-nginx-default.yml'
+  tags:
+    - api-nginx
+    - api-nginx:default
+
+- include: 'api-nginx-config.yml'
+  tags:
+    - api-nginx
+    - api-nginx:config
+
+- include: 'api-nginx-ssl.yml'
+  tags:
+    - api-nginx
+    - api-nginx:ssl

@@ -1,0 +1,8 @@
+---
+log_file_size: 50
+
+postgres_zabbix_user_name: zbx_monitor
+postgres_zabbix_user_password: zbx_monitor
+
+nginx_remote_config_name: zabbix-agent
+

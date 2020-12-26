@@ -1,0 +1,7 @@
+---
+- name: copy config file
+  template:
+    src: 'zabbix_agent.conf'
+    dest: '/etc/zabbix/zabbix_agent2.conf'
+  notify: restart zabbix-agent
+

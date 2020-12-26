@@ -1,0 +1,10 @@
+---
+- include: 'postfix.yml'
+  tags:
+    - postfix
+
+- include: 'opendkim.yml'
+  tags:
+    - postfix
+    - opendkim
+    - postfix:opendkim

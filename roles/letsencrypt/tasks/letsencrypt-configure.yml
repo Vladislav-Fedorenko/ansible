@@ -1,0 +1,18 @@
+---
+- name: create webroot dir
+  file:
+    path: '{{ letsencrypt_webroot_path }}'
+    state: directory
+
+- name: copy cli.ini
+  template:
+    src: 'cli.ini'
+    dest: '/etc/letsencrypt/cli.ini'
+
+- name: execute 'certbot certonly ...'
+  command: 'certbot certonly \
+           --non-interactive \
+           --email {{ letsencrypt_email }} \
+           --agree-tos \
+           --no-eff-email \
+           {% for domain in letsencrypt_domains %}-d {{ domain }} {% endfor %}'

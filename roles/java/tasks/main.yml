@@ -1,0 +1,12 @@
+---
+- include: 'java-install-stretch.yml'
+  tags:
+    - java
+    - java:install
+  when: ansible_distribution == 'Debian' and ansible_distribution_release == 'stretch'
+
+- include: 'java-install-buster.yml'
+  tags:
+    - java
+    - java:install
+  when: ansible_distribution == 'Debian' and ansible_distribution_release == 'buster'

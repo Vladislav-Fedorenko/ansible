@@ -1,0 +1,19 @@
+---
+- name: install psycopg2
+  apt:
+    name: 'python-psycopg2'
+
+- name: create postgres user
+  postgresql_user:
+    name: '{{ db_user_name }}'
+    password: '{{ db_user_password }}'
+  become: true
+  become_user: postgres
+
+- name: create postgres database
+  postgresql_db:
+    name: '{{ db_name }}'
+    owner: '{{ db_user_name }}'
+  become: true
+  become_user: postgres
+

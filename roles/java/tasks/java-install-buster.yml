@@ -1,0 +1,6 @@
+---
+- name: install java (buster)
+  apt:
+    name:
+      - '{{ java_package }}'
+      - 'ca-certificates-java'

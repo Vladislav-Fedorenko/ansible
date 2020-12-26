@@ -1,0 +1,28 @@
+---
+- name: install 'equivs'
+  apt:
+    name: 'equivs'
+
+- name: create 'fakepackages' dir
+  file:
+    path: '{{ fakepackage_dir }}'
+    state: directory
+
+- name: copy nginx fake package template
+  template:
+    src: 'nginx.fakepackage'
+    dest: '{{ fakepackage_dir }}/nginx'
+
+- name: build fake nginx.deb
+  command: 'equivs-build nginx'
+  args:
+    chdir: '{{ fakepackage_dir }}'
+
+- name: install fake nginx.deb
+  apt:
+    deb: '{{ fakepackage_dir }}/nginx_99_all.deb'
+
+- name: remove 'fakepackages' dir
+  file:
+    path: '{{ fakepackage_dir }}'
+    state: absent

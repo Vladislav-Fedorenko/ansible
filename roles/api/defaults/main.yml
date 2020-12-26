@@ -1,0 +1,5 @@
+---
+api_user: 'test'
+api_user_dir: '/opt/test'
+api_user_sub_dirs: []
+api_server_dir: '/opt/test/backend'

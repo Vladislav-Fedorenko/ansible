@@ -1,0 +1,38 @@
+---
+- name: install opendkim
+  apt:
+    name: 'opendkim'
+
+- name: create dir for keys
+  file:
+    path: '{{ opendkim_key_dest }}'
+    state: directory
+
+- name: copy opendkim key
+  copy:
+    src: 'domainkey.pem'
+    dest: '{{ opendkim_key_dest }}/domainkey.pem'
+    mode: '0400'
+
+- name: copy opendkim config
+  template:
+    src: 'opendkim.conf'
+    dest: '/etc/opendkim.conf'
+  notify: restart opendkim
+
+- name: start opendkim
+  service:
+    name: 'opendkim'
+    state: started
+
+- name: enable opendkim milter
+  lineinfile:
+    dest: '/etc/postfix/main.cf'
+    line: '{{ item }}'
+    backup: yes
+  with_items:
+    - 'milter_protocol = 2'
+    - 'milter_default_action = accept'
+    - 'smtpd_milters = inet:127.0.0.1:12301'
+    - 'non_smtpd_milters = inet:127.0.0.1:12301'
+  notify: restart postfix

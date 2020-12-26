@@ -1,0 +1,18 @@
+---
+- name: copy nginx config
+  template:
+    src: '{{ protocol }}/{{ config_name }}'
+    dest: '/etc/nginx/sites-available/{{ remote_config_name }}'
+    backup: yes
+  notify: reload nginx (api-nginx)
+
+- name: enable nginx configuration
+  file:
+    src: '/etc/nginx/sites-available/{{ remote_config_name }}'
+    dest: '/etc/nginx/sites-enabled/{{ remote_config_name }}'
+    state: link
+  notify: reload nginx (api-nginx)
+
+- name: validate nginx configuration
+  command: /usr/sbin/nginx -t
+  changed_when: false

@@ -1,0 +1,20 @@
+---
+- name: copy nginx config
+  copy:
+    src: nginx/zabbix.nginx
+    dest: '/etc/nginx/sites-available/{{ nginx_remote_config_name }}'
+
+- name: enable nginx configuration
+  file:
+    src: '/etc/nginx/sites-available/{{ nginx_remote_config_name }}'
+    dest: '/etc/nginx/sites-enabled/{{ nginx_remote_config_name }}'
+    state: link
+
+- name: validate nginx configuration
+  command: /usr/sbin/nginx -t
+  changed_when: false
+
+- name: reload nginx
+  service:
+    name: 'nginx'
+    state: reloaded

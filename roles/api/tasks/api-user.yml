@@ -1,0 +1,5 @@
+---
+- name: add user
+  user:
+    name: '{{ api_user }}'
+    system: yes

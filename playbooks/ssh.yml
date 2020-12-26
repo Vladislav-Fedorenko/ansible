@@ -1,0 +1,6 @@
+---
+- name: SSH
+  hosts: all
+  remote_user: root
+  roles:
+    - ssh-keys

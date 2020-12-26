@@ -1,0 +1,44 @@
+---
+- name: create 'sites-*' dirs
+  file:
+    path: '/etc/nginx/{{ item }}'
+    state: directory
+  with_items:
+    - sites-available
+    - sites-enabled
+
+- name: create '/var/lib/nginx' dir
+  file:
+    path: '/var/lib/nginx'
+    state: directory
+
+- name: create '/var/lib/nginx/*' subdirs
+  file:
+    path: '/var/lib/nginx/{{ item }}'
+    state: directory
+    owner: 'www-data'
+    mode: '0700'
+  with_items:
+    - body
+    - fastcgi
+    - proxy
+    - scgi
+    - uwsgi
+
+- name: create '/var/www/html' dir
+  file:
+    path: '/var/www/html'
+    state: directory
+
+- name: copy index.html to '/var/www/html'
+  copy:
+    src: 'index.html'
+    dest: '/var/www/html/index.html'
+
+- name: create dir for upload images
+  file:
+    path: '/opt/test/upload'
+    state: directory
+    owner: 'www-data'
+    group: 'www-data'
+    mode: '0755'

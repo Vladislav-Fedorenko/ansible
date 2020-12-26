@@ -1,0 +1,3 @@
+---
+java_package: 'openjdk-11-jre-headless'
+java_debian_mirror: 'http://ftp.debian.org/debian'

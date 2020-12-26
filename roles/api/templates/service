@@ -1,0 +1,12 @@
+[Unit]
+Description={{ api_service_description }}
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory={{ api_server_dir }}
+ExecStart=/usr/bin/java -jar server.jar
+User={{ api_user }}
+
+[Install]
+WantedBy=multi-user.target

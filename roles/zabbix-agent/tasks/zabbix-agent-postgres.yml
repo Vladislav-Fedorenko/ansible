@@ -1,0 +1,45 @@
+---
+- name: install 'sudo' module
+  apt:
+    name: 'sudo'
+
+- name: install psycopg2
+  apt:
+    name: 'python-psycopg2'
+
+- name: сollect PostgreSQL version and extensions
+  become: yes
+  become_user: postgres
+  postgresql_info:
+    filter: ver*
+  register: postgresql_info
+
+# CREATE USER zbx_monitor WITH PASSWORD puluH4cah7IWaixu
+# CREATE USER '{{ postgres_zabbix_user_name }}' WITH PASSWORD {{ postgres_zabbix_user_password }}
+# GRANT pg_monitor TO {{ postgres_zabbix_user_name  }}
+#
+- name: create postgres user (version >= 10)
+  become: true
+  become_user: postgres
+  postgresql_user:
+    name: '{{ postgres_zabbix_user_name }}'
+    password: '{{ postgres_zabbix_user_password }}'
+    groups:
+      - pg_monitor
+  when: postgresql_info.version.major >= 10
+
+#
+# CREATE USER '{{ postgres_zabbix_user_name }}' WITH PASSWORD {{ postgres_zabbix_user_password }}
+# GRANT SELECT ON pg_stat_database TO {{ postgres_zabbix_user_name  }}
+#
+- name: create postgres user (version == 9)
+  become: true
+  become_user: postgres
+  postgresql_user:
+    db: postgres
+    name: '{{ postgres_zabbix_user_name }}'
+    password: '{{ postgres_zabbix_user_password }}'
+    priv: pg_stat_database:SELECT
+    state: present
+  when: postgresql_info.version.major == 9
+

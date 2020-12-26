@@ -1,0 +1,6 @@
+---
+postfix_mailname: 'your.domain'
+
+opendkim_domain: 'your.domain'
+opendkim_selector: 'mail'
+opendkim_key_dest: '/etc/opendkim'

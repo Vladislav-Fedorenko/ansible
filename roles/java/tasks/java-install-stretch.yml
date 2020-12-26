@@ -1,0 +1,13 @@
+---
+- name: add backports repository (stretch)
+  apt_repository:
+    repo: 'deb {{ java_debian_mirror }} stretch-backports main'
+    filename: 'stretch-backports'
+    state: present
+
+- name: install java (stretch)
+  apt:
+    name:
+      - '{{ java_package }}'
+      - 'ca-certificates-java'
+    default_release: 'stretch-backports'

@@ -1,0 +1,6 @@
+---
+- include: 'debian.yml'
+  tags:
+    - common
+    - common:debian
+  when: ansible_os_family == 'Debian'

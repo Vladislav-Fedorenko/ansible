@@ -1,0 +1,48 @@
+---
+- name: download and unarchive "pcre" module
+  unarchive:
+    src: 'https://ftp.pcre.org/pub/pcre/pcre-{{ pcre_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: download and unarchive "zlib" module
+  unarchive:
+    src: 'http://zlib.net/zlib-{{ zlib_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: download and unarchive "openssl" module
+  unarchive:
+    src: 'http://www.openssl.org/source/openssl-{{ openssl_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: download and unarchive "upload" module
+  unarchive:
+    src: 'https://github.com/vkholodkov/nginx-upload-module/archive/master.zip'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: download and unarchive "echo nginx" module
+  unarchive:
+    src: 'https://github.com/openresty/echo-nginx-module/archive/v{{ echo_nginx_version }}.zip'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: download and unarchive "ngx http substitutions filter" module
+  unarchive:
+    src: 'https://github.com/yaoweibin/ngx_http_substitutions_filter_module/archive/v{{ ngx_http_substitutions_filter_version }}.zip'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: download and unarchive "dav ext" module
+  unarchive:
+    src: 'https://github.com/arut/nginx-dav-ext-module/archive/v{{ dav_ext_version }}.zip'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: download and unarchive "nginx"
+  unarchive:
+    src: 'https://nginx.org/download/nginx-{{ nginx_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes

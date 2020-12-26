@@ -1,0 +1,15 @@
+---
+- include: 'api-user.yml'
+  tags:
+    - api
+    - api:user
+
+- include: 'api-dirs.yml'
+  tags:
+    - api
+    - api:dirs
+
+- include: 'api-service.yml'
+  tags:
+    - api
+    - api:service

@@ -1,0 +1,12 @@
+---
+- name: install required libraries
+  apt:
+    name: '{{ item }}'
+  with_items:
+    - build-essential
+    - libxslt-dev
+    - libgd-dev
+    - unzip
+
+
+

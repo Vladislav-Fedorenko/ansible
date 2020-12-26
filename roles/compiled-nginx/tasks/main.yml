@@ -1,0 +1,35 @@
+---
+- include: 'compiled-nginx-dependencies.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:dependencies
+
+- include: 'compiled-nginx-download.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:download
+
+- include: 'compiled-nginx-configure.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:configure
+
+- include: 'compiled-nginx-dirs.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:dirs
+
+- include: 'compiled-nginx-service.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:service
+
+- include: 'compiled-nginx-config.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:config
+
+- include: 'compiled-nginx-fakepackage.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:fakepackage

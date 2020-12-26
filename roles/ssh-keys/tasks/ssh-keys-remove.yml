@@ -1,0 +1,8 @@
+---
+- name: remove ssh keys
+  authorized_key:
+    user: root
+    state: absent
+    key: '{{ lookup("file", item) }}'
+  with_fileglob:
+    - 'absent-keys/*.pub'

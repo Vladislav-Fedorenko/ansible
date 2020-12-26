@@ -1,0 +1,14 @@
+---
+- name: disable swap file
+  command: 'swapoff {{ swap_file_dest }}'
+
+- name: remove swap file
+  file:
+    path: '{{ swap_file_dest }}'
+    state: absent
+
+- name: disable swap file at bootup
+  lineinfile:
+    path: /etc/fstab
+    state: absent
+    regexp: '{{ swap_file_dest }} swap swap defaults 0 0'

@@ -1,0 +1,13 @@
+---
+nginx_version: 1.16.1
+
+pcre_version: 8.43
+zlib_version: 1.2.11
+openssl_version: 1.1.1c
+echo_nginx_version: 0.61
+ngx_http_substitutions_filter_version: 0.6.4
+dav_ext_version: 3.0.0
+
+fakepackage_dir: '/tmp/fakepackages'
+fakepackage_version: '1:99'
+fakepackage_maintainer: 'Admin <admin@your.domain>'

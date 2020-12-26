@@ -1,0 +1,20 @@
+---
+- include: 'zabbix-agent-install.yml'
+  tags:
+    - zabbix-agent
+    - zabbix-agent:install
+
+- include: 'zabbix-agent-configuration.yml'
+  tags:
+    - zabbix-agent
+    - zabbix-agent:configuration
+
+- include: 'zabbix-agent-postgres.yml'
+  tags:
+    - zabbix-agent
+    - zabbix-agent:postgres
+
+- include: 'zabbix-agent-nginx.yml'
+  tags:
+    - zabbix-agent
+    - zabbix-agent:nginx

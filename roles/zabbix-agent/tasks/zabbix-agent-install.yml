@@ -1,0 +1,30 @@
+---
+- name: install xz-utils
+  apt:
+    name: xz-utils
+
+- name: download zabbix-release deb package (debian:stretch)
+  get_url:
+    url: 'https://repo.zabbix.com/zabbix/5.2/debian/pool/main/z/zabbix-release/zabbix-release_5.2-1+debian9_all.deb'
+    dest: /tmp/zabbix-release.deb
+  when: ansible_distribution == 'Debian' and ansible_distribution_release == 'stretch'
+
+- name: download zabbix-release deb package (debian:buster)
+  get_url:
+    url: 'https://repo.zabbix.com/zabbix/5.2/debian/pool/main/z/zabbix-release/zabbix-release_5.2-1+debian10_all.deb'
+    dest: /tmp/zabbix-release.deb
+  when: ansible_distribution == 'Debian' and ansible_distribution_release == 'buster'
+
+- name: install zabbix-release
+  apt:
+    deb: /tmp/zabbix-release.deb
+
+- name: install zabbix-agent
+  apt:
+    name: zabbix-agent2
+    update_cache: yes
+
+- name: remove zabbix-release deb package
+  file:
+    path: '/tmp/zabbix-release.deb'
+    state: absent

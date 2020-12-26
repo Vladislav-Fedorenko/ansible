@@ -1,0 +1,21 @@
+---
+- name: reload systemd (compiled-nginx)
+  command: 'systemctl daemon-reload'
+  notify:
+    - restart nginx (compiled-nginx)
+    - enable nginx (compiled-nginx)
+
+- name: restart nginx (compiled-nginx)
+  service:
+    name: 'nginx'
+    state: restarted
+
+- name: enable nginx (compiled-nginx)
+  service:
+    name: 'nginx'
+    enabled: yes
+
+- name: reload nginx (compiled-nginx)
+  service:
+    name: 'nginx'
+    state: reloaded

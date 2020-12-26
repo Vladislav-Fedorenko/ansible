@@ -1,0 +1,9 @@
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+
+Package: nginx
+Version: {{ fakepackage_version }}
+Maintainer: {{ fakepackage_maintainer }}
+Architecture: all
+Description: A fake package that doesn't really install nginx.

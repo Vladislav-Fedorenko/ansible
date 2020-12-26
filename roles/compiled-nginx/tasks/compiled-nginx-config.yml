@@ -1,0 +1,23 @@
+---
+- name: copy nginx.conf
+  copy:
+    src: 'nginx.conf'
+    dest: '/etc/nginx/nginx.conf'
+  notify: reload nginx (compiled-nginx)
+
+- name: copy default config
+  copy:
+    src: 'default.nginx'
+    dest: '/etc/nginx/sites-available/default'
+  notify: reload nginx (compiled-nginx)
+
+- name: enable default config
+  file:
+    src: '/etc/nginx/sites-available/default'
+    dest: '/etc/nginx/sites-enabled/default'
+    state: link
+  notify: reload nginx (compiled-nginx)
+
+- name: validate nginx configuration
+  command: /usr/sbin/nginx -t
+  changed_when: false

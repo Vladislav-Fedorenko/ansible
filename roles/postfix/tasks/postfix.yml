@@ -1,0 +1,23 @@
+---
+- name: postfix configuration mailer type in debconf
+  debconf:
+    name: 'postfix'
+    question: 'postfix/main_mailer_type'
+    vtype: 'select'
+    value: 'Internet Site'
+
+- name: postfix configuration mailname in debconf
+  debconf:
+    name: 'postfix'
+    question: 'postfix/mailname'
+    vtype: 'string'
+    value: '{{ postfix_mailname }}'
+
+- name: install postfix
+  apt:
+    name: postfix
+
+- name: start postfix
+  service:
+    name: 'postfix'
+    state: started

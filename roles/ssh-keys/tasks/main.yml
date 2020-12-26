@@ -1,0 +1,10 @@
+---
+- include: 'ssh-keys-add.yml'
+  tags:
+    - ssh-keys
+    - ssh-keys:add
+
+- include: 'ssh-keys-remove.yml'
+  tags:
+    - ssh-keys
+    - ssh-keys:remove

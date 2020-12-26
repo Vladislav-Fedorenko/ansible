@@ -1,0 +1,6 @@
+---
+- name: create service config
+  copy:
+    src: 'service'
+    dest: '/lib/systemd/system/nginx.service'
+  notify: reload systemd (compiled-nginx)

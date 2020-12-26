@@ -1,0 +1,10 @@
+---
+- include: 'postgres-install.yml'
+  tags:
+    - postgres
+    - postgres:install
+
+- include: 'postgres-configuration.yml'
+  tags:
+    - postgres
+    - postgres:configuration

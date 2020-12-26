@@ -1,0 +1,9 @@
+---
+- name: reload systemd (api)
+  command: 'systemctl daemon-reload'
+  notify: restart api
+
+- name: restart api
+  service:
+    name: '{{ api_service_name }}'
+    state: restarted

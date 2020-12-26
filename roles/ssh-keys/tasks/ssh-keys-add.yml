@@ -1,0 +1,8 @@
+---
+- name: add ssh keys
+  authorized_key:
+    user: root
+    state: present
+    key: '{{ lookup("file", item) }}'
+  with_fileglob:
+    - 'present-keys/*.pub'

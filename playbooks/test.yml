@@ -1,0 +1,33 @@
+---
+- name: Test
+  hosts: test
+  remote_user: root
+  roles:
+    - common
+    - role: firewall
+      when: env_type == 'prod'
+    - swap
+    - java
+    - role: api
+      vars:
+        api_service_name: 'test-service'
+        api_service_description: 'Test Service'
+    - nginx
+#    - compiled-nginx
+    - role: letsencrypt
+      vars:
+        letsencrypt_domains:
+          - '{{ dns_name }}'
+      when: env_type == 'prod'
+    - role: api-nginx
+      vars:
+        config_name: 'test.nginx'
+        remote_config_name: 'test'
+    - role: postgres
+      vars:
+        db_user_name: test
+        db_user_password:
+        db_name: test_db
+    - role: postfix
+      when: env_type == 'prod'
+    - zabbix-agent

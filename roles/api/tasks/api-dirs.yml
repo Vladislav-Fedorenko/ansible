@@ -1,0 +1,19 @@
+---
+- name: create user dir
+  file:
+    path: '{{ api_user_dir }}'
+    owner: '{{ api_user  }}'
+    state: directory
+
+- name: create server dir
+  file:
+    path: '{{ api_server_dir }}'
+    owner: '{{ api_user  }}'
+    state: directory
+
+- name: create user subdirs
+  file:
+    path: '{{ item }}'
+    owner: '{{ api_user  }}'
+    state: directory
+  with_items: '{{ api_user_sub_dirs }}'

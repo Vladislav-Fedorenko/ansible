@@ -1,0 +1,15 @@
+---
+- include: 'letsencrypt-install.yml'
+  tags:
+    - letsencrypt
+    - letsencrypt:install
+    -
+- include: 'letsencrypt-configure.yml'
+  tags:
+    - letsencrypt
+    - letsencrypt:configure
+    -
+- include: 'letsencrypt-renew.yml'
+  tags:
+    - letsencrypt
+    - letsencrypt:renew

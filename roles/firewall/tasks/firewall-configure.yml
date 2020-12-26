@@ -1,0 +1,12 @@
+---
+- name: install iptables-persistent
+  apt:
+    name: 'iptables-persistent'
+
+- name: copy rules for ipv4
+  template:
+    src: 'rules.v4'
+    dest: '/etc/iptables/rules.v4'
+
+- name: restore rules for ipv4
+  shell: 'iptables-restore < /etc/iptables/rules.v4'

@@ -1,0 +1,7 @@
+---
+- name: add '--allow-subset-of-names' flag to cron task 'certbot'
+  replace:
+    path: '/etc/cron.d/certbot'
+    regexp: '&& certbot -q renew$'
+    replace: '&& certbot -q renew --allow-subset-of-names'
+    backup: yes
