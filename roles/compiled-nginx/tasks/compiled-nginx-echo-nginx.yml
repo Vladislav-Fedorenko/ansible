@@ -1,0 +1,6 @@
+---
+- name: download and unarchive "echo nginx" module
+  unarchive:
+    src: 'https://github.com/openresty/echo-nginx-module/archive/v{{ echo_nginx_version }}.zip'
+    dest: '/tmp'
+    remote_src: yes

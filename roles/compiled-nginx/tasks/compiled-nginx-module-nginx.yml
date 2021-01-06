@@ -1,32 +1,11 @@
 ---
-- name: configure "pcre" module
-  command: '{{ item }}'
-  with_items:
-    - './configure'
-    - 'make'
-    - 'make install'
-  args:
-    chdir: '/tmp/pcre-{{ pcre_version }}'
+- name: download and unarchive "nginx"
+  unarchive:
+    src: 'https://nginx.org/download/nginx-{{ nginx_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes
 
-- name: configure "zlib" module
-  command: '{{ item }}'
-  with_items:
-    - './configure'
-    - 'make'
-    - 'make install'
-  args:
-    chdir: '/tmp/zlib-{{ zlib_version }}'
-
-- name: configure "openssl" module
-  command: '{{ item }}'
-  with_items:
-    - './Configure linux-x86_64 --prefix=/usr'
-    - 'make'
-    - 'make install'
-  args:
-    chdir: '/tmp/openssl-{{ openssl_version }}'
-
-- name: configure "nginx"
+- name: build "nginx"
   command: '{{ item }}'
   with_items:
     - "./configure \

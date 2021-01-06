@@ -1,0 +1,15 @@
+---
+- name: download and unarchive "pcre" module
+  unarchive:
+    src: 'https://ftp.pcre.org/pub/pcre/pcre-{{ pcre_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: build "pcre" module
+  command: '{{ item }}'
+  with_items:
+    - './configure'
+    - 'make'
+    - 'make install'
+  args:
+    chdir: '/tmp/pcre-{{ pcre_version }}'

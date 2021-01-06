@@ -1,5 +1,5 @@
 ---
 - name: generate DH params
   command: 'openssl dhparam -out {{ dh_param_dest }} 2048'
-  when: protocol == 'https'
+  when: env_type == 'test'
 

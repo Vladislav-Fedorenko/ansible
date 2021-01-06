@@ -1,4 +1,6 @@
 [all:vars]
+ansible_user=root
+
 env_type=test
 
 zabbix_server_name=zabbix.lan

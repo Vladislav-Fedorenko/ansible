@@ -1,0 +1,15 @@
+---
+- name: download and unarchive "zlib" module
+  unarchive:
+    src: 'http://zlib.net/zlib-{{ zlib_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: build "zlib" module
+  command: '{{ item }}'
+  with_items:
+    - './configure'
+    - 'make'
+    - 'make install'
+  args:
+    chdir: '/tmp/zlib-{{ zlib_version }}'

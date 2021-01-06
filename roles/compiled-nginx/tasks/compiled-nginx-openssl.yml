@@ -1,0 +1,15 @@
+---
+- name: download and unarchive "openssl" module
+  unarchive:
+    src: 'http://www.openssl.org/source/openssl-{{ openssl_version }}.tar.gz'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: build "openssl" module
+  command: '{{ item }}'
+  with_items:
+    - './Configure linux-x86_64 --prefix=/usr'
+    - 'make'
+    - 'make install'
+  args:
+    chdir: '/tmp/openssl-{{ openssl_version }}'

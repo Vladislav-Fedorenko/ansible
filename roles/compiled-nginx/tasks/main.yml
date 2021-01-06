@@ -4,15 +4,45 @@
     - compiled-nginx
     - compiled-nginx:dependencies
 
-- include: 'compiled-nginx-download.yml'
+- include: 'compiled-nginx-prce.yml'
   tags:
     - compiled-nginx
-    - compiled-nginx:download
+    - compiled-nginx:prce
 
-- include: 'compiled-nginx-configure.yml'
+- include: 'compiled-nginx-zlib.yml'
   tags:
     - compiled-nginx
-    - compiled-nginx:configure
+    - compiled-nginx:zlib
+
+- include: 'compiled-nginx-openssl.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:openssl
+
+- include: 'compiled-nginx-upload.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:upload
+
+- include: 'compiled-nginx-echo-nginx.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:echo-nginx
+
+- include: 'compiled-nginx-ngx-http-substitutions-filter.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:ngx-http-substitutions-filter
+
+- include: 'compiled-nginx-dav-ext.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:dav-ext
+
+- include: 'compiled-nginx-module-nginx.yml'
+  tags:
+    - compiled-nginx
+    - compiled-nginx:module-nginx
 
 - include: 'compiled-nginx-dirs.yml'
   tags:

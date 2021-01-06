@@ -1,0 +1,6 @@
+---
+- name: download and unarchive "upload" module
+  unarchive:
+    src: 'https://github.com/vkholodkov/nginx-upload-module/archive/master.zip'
+    dest: '/tmp'
+    remote_src: yes

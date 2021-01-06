@@ -3,3 +3,7 @@
   tags:
     - swap
     - swap:setup
+
+- include: 'swap-remove.yml'
+  tags:
+    - swap:remove

@@ -37,7 +37,7 @@ ssh root@192.168.33.11
 ## How to manage ssh keys on remote hosts
 * add key of a user which you want give access to `roles/ssh-keys/files/present-keys`
 * move key of the user which you want to take away access `roles/ssh-keys/files/present-keys` to `roles/ssh-keys/files/absent-keys`
-* execute `./playbooks/ssh.yml`
+* execute `ansible-playbook -i inventory-file ./playbooks/ssh.yml`
 
 ## How to configure environment on hosts
 

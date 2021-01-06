@@ -1,0 +1,6 @@
+---
+- name: download and unarchive "dav ext" module
+  unarchive:
+    src: 'https://github.com/arut/nginx-dav-ext-module/archive/v{{ dav_ext_version }}.zip'
+    dest: '/tmp'
+    remote_src: yes

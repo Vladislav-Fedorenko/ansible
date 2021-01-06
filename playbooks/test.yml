@@ -1,7 +1,6 @@
 ---
 - name: Test
   hosts: test
-  remote_user: root
   roles:
     - common
     - role: firewall
@@ -21,6 +20,7 @@
       when: env_type == 'prod'
     - role: api-nginx
       vars:
+        api_port: '9002'
         config_name: 'test.nginx'
         remote_config_name: 'test'
     - role: postgres
