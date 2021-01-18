@@ -4,4 +4,3 @@
     path: '/etc/cron.d/certbot'
     regexp: '&& certbot -q renew$'
     replace: '&& certbot -q renew --allow-subset-of-names'
-    backup: yes

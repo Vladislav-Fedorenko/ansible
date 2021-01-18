@@ -14,7 +14,6 @@
     filter: ver*
   register: postgresql_info
 
-# CREATE USER zbx_monitor WITH PASSWORD puluH4cah7IWaixu
 # CREATE USER '{{ postgres_zabbix_user_name }}' WITH PASSWORD {{ postgres_zabbix_user_password }}
 # GRANT pg_monitor TO {{ postgres_zabbix_user_name  }}
 #

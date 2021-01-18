@@ -1,0 +1,13 @@
+---
+ansible_user: root
+env_type: local
+
+postfix_mailname: 'local.host'
+opendkim_domain: 'local.host'
+opendkim_selector: 'mail'
+
+letsencrypt_email: 'local@local.host'
+
+zabbix_server_name: zabbix.local
+zabbix_server_ip: 192.168.200.0/24
+ssh_network: 192.168.0.0/16

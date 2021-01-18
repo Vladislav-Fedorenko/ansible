@@ -43,7 +43,6 @@ ssh root@192.168.33.11
 
 * Read some important info about executing roles and playbooks:
   * "postgres" role:
-    - username and password should be configured manually (or actualized after executing)
-    - version of database can be configured using variable
+    - you should create file inventories/*/postgres.passwd and put password there
   * "zabbix" role:
-     - password for user on production env should be set manually (default vars)
+     - you should create file inventories/*/zabbix.passwd and put password there

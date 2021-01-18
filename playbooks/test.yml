@@ -26,8 +26,10 @@
     - role: postgres
       vars:
         db_user_name: test
-        db_user_password:
+        db_user_password: '{{ lookup("file", "../inventories/{{ env_type }}/postgres.passwd") }}'
         db_name: test_db
     - role: postfix
       when: env_type == 'prod'
-    - zabbix-agent
+    - role: zabbix-agent
+      vars:
+        postgres_zabbix_user_password: '{{ lookup("file", "../inventories/{{ env_type }}/zabbix.passwd") }}'

@@ -1,7 +1,7 @@
 ---
 - name: copy nginx config
   template:
-    src: '../../host_templates/{{ env_type }}/{{ config_name }}'
+    src: '../../inventories/{{ env_type }}/templates/{{ config_name }}'
     dest: '/etc/nginx/sites-available/{{ remote_config_name }}'
     backup: yes
   notify: reload nginx (api-nginx)

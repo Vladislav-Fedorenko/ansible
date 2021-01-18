@@ -1,0 +1,2 @@
+[test]
+test.lan ansible_host=192.168.200.1 dns_name=test.your.domain
