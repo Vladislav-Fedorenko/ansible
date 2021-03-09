@@ -1,3 +1,3 @@
 ---
 letsencrypt_email: 'admin@your.domain'
-letsencrypt_webroot_path: '/var/html/www'
+letsencrypt_webroot_path: '/var/www/html'
