@@ -4,6 +4,11 @@
     name: postfix
     state: restarted
 
+- name: reload postfix
+  service:
+    name: postfix
+    state: reloaded
+
 - name: restart opendkim
   service:
     name: opendkim

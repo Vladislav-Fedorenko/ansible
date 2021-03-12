@@ -21,3 +21,12 @@
   service:
     name: 'postfix'
     state: started
+
+- name: change 'myhostname' variable
+  lineinfile:
+    dest: '/etc/postfix/main.cf'
+    regexp: '^myhostname ='
+    line: 'myhostname = {{ postfix_mailname }}'
+    backup: yes
+  notify: reload postfix
+
